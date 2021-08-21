@@ -1,0 +1,95 @@
+button {
+    background-color: transparent;
+    border: transparent;
+}
+
+.title {
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.from {
+    width: 90px;
+    height: 35px;
+    padding-left: 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.to {
+    width: 90px;
+    height: 35px;
+    padding-left: 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.dropdown-select {
+    z-index: 1;
+    padding-top: 13rem;
+    padding-left: 15rem;
+    padding-right: 5rem;
+    padding-bottom: 15rem;
+    background-color: white;
+    position: absolute;
+    left: -50%;
+    top: 0%;
+
+    h1 {
+        padding-bottom: 1rem;
+    }
+
+    &-closeBtn {
+        z-index: 2;
+        position: absolute;
+        top: 5%;
+        right: 30%;
+    }
+}
+
+.textboxed {
+    padding-top: 3.5rem;
+    display: block;
+}
+
+.res {
+    margin-top: 3rem;
+}
+
+.menu {
+    padding-top: 5rem;
+    display: grid;
+    grid-gap: 10rem;
+    grid-template-columns: auto auto;
+    display: flex;
+    justify-content: center;
+    &-weather {
+        img {
+            width: 250px;
+        }
+        display: block !important;
+        text-align: center;
+        padding-left: 50px;
+    }
+
+    &-theme {
+        img {
+            width: 250px;
+        }
+        display: block !important;
+        text-align: center;
+        padding-left: 50px;
+    }
+}
+
+.colorForm {
+    z-index: 2;
+    position: fixed;
+    top: 0%;
+    padding-right: 20rem;
+    padding-top: 20rem;
+    padding-left: 5rem;
+    padding-bottom: 24.5rem;
+    right: -50%;
+    background-color: white;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/index.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="title">
+        <h1> Temperature Conversion App </h1>
+    </div>
+
+    <div class="menu">
+        <div class="menu-weather">
+            <button id="sunnyBtn"> 
+            <img src="./img/sunny.png" alt="">
+        </button>
+            <h1> Weather </h1>
+
+            <form class="dropdown-select" id="weatherForm">
+                <button class="dropdown-select-closeBtn" id="">
+                    X
+                </button>
+                <h1> Select the temperature and <br> Enter the number </h1>
+                <div class="">
+                  <select class="from" name="from" id="from" onchange="select()">
+                    <option value="cel">Celcius</option>
+                    <option value="far">Farenheit</option>
+                    <option value="rea">Reamur</option>
+                  </select>
+                  to
+                  <select class="to" name="to" id="to" onchange="select()">
+                    <option value="cel">Celcius</option>
+                    <option value="far">Farenheit</option>
+                    <option value="rea">Reamur</option>
+                  </select>
+                </div>
+                <div class="textboxed">
+                    <input type="number" class="input" id="num1" class="form-control mb-4" placeholder="Enter an number" onkeypress="validate(event)" onkeyup="conv()">
+                    <br> <br>
+                    <input type="number" class="res" id="result" class="form-control mb-4" disabled>
+                </div>
+              </form>
+        </div>
+
+        <div class="menu-theme">
+           <button id="themeBtn">
+             <img src="./img/color-palette.png" alt="">
+           </button>
+            <h1> Theme </h1>
+
+            <form id="colorForm" class="colorForm">
+              <button class="dropdown-select-closeBtn" id="">
+                X
+            </button>
+              Change Background Color :  <br>  <br> <input class="form-control" id="color">
+              <button type="button" class="btn btn-light" onclick="change()">
+                Change
+              </button>
+          </form>
+        </div>
+    </div>
+</body>
+<script src="./convert.js"></script>
+<script src="./slide.js"></script>
+<script>
+
+    function validate(evt) {
+      var theEvent = evt || window.event;
+
+      // Handle paste
+      if (theEvent.type === "paste") {
+        key = event.clipboardData.getData("text/plain");
+      } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]|\./;
+      if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+    function select() {
+      document.getElementById("num1").value = "";
+      document.getElementById("result").value = "";
+    }
+
+    const convert = new Convert();
+    function conv() {
+      if (document.getElementById("from").value == "cel") {
+        const res = convert.fromCelcius(
+          document.getElementById("to").value,
+          parseInt(document.getElementById("num1").value)
+        );
+        document.getElementById("result").value = res;
+      }
+      if (document.getElementById("from").value == "rea") {
+        const res = convert.fromReamur(
+          document.getElementById("to").value,
+          parseInt(document.getElementById("num1").value)
+        );
+        document.getElementById("result").value = res;
+      }
+      if (document.getElementById("from").value == "far") {
+        const res = convert.fromFarenheit(
+          document.getElementById("to").value,
+          parseInt(document.getElementById("num1").value)
+        );
+        document.getElementById("result").value = res;
+      }
+    }
+    function change() {
+      document.body.style.backgroundColor =
+        document.getElementById("color").value;
+    }
+</script>
+</html>
